@@ -29,7 +29,7 @@ jobs:
         with:
           category: "/language:${{matrix.language}}"
   deploy-to-gh-pages:
-    needs: [codeql-analysis]
+    # needs: [codeql-analysis]
     name: Deploy to GitHub Pages
     runs-on: ubuntu-latest
     steps:
@@ -40,7 +40,7 @@ jobs:
         with:
           node-version: 20
       - name: Install dependencies
-        run: npm i --legacy-peer-deps
+        run: npm i
       - name: Configure git
         run: |
           git config --global user.name '${{ secrets.COMMIT_USER }}'

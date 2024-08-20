@@ -1,0 +1,65 @@
+name: "Deployment"
+on:
+  push:
+    branches: ["main"]
+  workflow_dispatch:
+jobs:
+  codeql-analysis:
+    name: CodeQL Analysis
+    runs-on: ${{ (matrix.language == 'swift' && 'macos-latest') || 'ubuntu-latest' }}
+    permissions:
+      actions: read
+      contents: read
+      security-events: write
+    strategy:
+      fail-fast: false
+      matrix:
+        language: ["javascript", "typescript"]
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Initialize CodeQL
+        uses: github/codeql-action/init@v3
+        with:
+          languages: ${{ matrix.language }}
+      - name: Autobuild
+        uses: github/codeql-action/autobuild@v3
+      - name: Perform CodeQL Analysis
+        uses: github/codeql-action/analyze@v3
+        with:
+          category: "/language:${{matrix.language}}"
+  deploy-to-gh-pages:
+    needs: [codeql-analysis]
+    name: Deploy to GitHub Pages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - name: Install dependencies
+        run: npm i --legacy-peer-deps
+      - name: Configure git
+        run: |
+          git config --global user.name '${{ secrets.COMMIT_USER }}'
+          git config --global user.email '${{ secrets.COMMIT_USER }}@users.noreply.github.com'
+          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+          echo "${{ secrets.GPG_PRIVATE_KEY }}" | base64 --decode | gpg --import
+          git config --global user.signingkey ${{ secrets.GPG_KEY_ID }}
+          git config --global commit.gpgsign true
+      - name: Deploy to gh-pages
+        run: |
+          npm run build-for-gh-pages
+          git clone https://github.com/${{ github.repository_owner }}/${{ github.repository_owner }}.github.io.git
+          rm -rf ./${{ github.repository_owner }}.github.io/*
+          cp -r dist/* ./${{ github.repository_owner }}.github.io/
+          cp docs/PAGES_README.md ./${{ github.repository_owner }}.github.io/README.md
+          cp docs/PAGES_CNAME ./${{ github.repository_owner }}.github.io/CNAME
+          cd ./${{ github.repository_owner }}.github.io/
+          git remote remove origin
+          git remote add origin https://${{ secrets.PRIVATE_TOKEN }}@github.com/${{ github.repository_owner }}/${{ github.repository_owner }}.github.io
+          git add .
+          git diff-index --quiet HEAD || git commit -m "Deploy to GitHub Pages"
+          git push --set-upstream origin main

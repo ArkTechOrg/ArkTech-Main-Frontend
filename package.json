@@ -7,7 +7,8 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "build-for-gh-pages": "vite build && cp dist/index.html dist/404.html"
   },
   "dependencies": {
     "clsx": "^2.1.1",

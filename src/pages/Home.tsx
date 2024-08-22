@@ -21,12 +21,15 @@ const Home = () => {
                       lg:text-5xl lg:leading-[60px]
                       xl:text-6xl xl:leading-[70px]"
           >
-            We appreciate your patience but<br />something really cool is coming soon!
+            We appreciate your patience but
+            <br />
+            something really cool is coming soon!
           </motion.h1>
         </LampContainer>
-        <img src={glowing_penguin}
+        <img
+          src={glowing_penguin}
           alt="Glowing Penguin"
-          className="absolute right-0 bottom-[-3%]"
+          className="absolute right-0 bottom-[-5vh] w-[50vw] max-w-[400px] md:bottom-[-3%] md:w-[30vw] lg:w-[25vw]"
         />
       </div>
     </div>

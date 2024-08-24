@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 
 const Home = () => {
   return (
-    <div className="relative min-h-screen overflow-hidden font-product-sans">
+    <div className="relative min-h-screen overflow-hidden font-outfit">
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
@@ -13,7 +13,7 @@ const Home = () => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="text-center text-white font-product-sans leading-tight
+          className="text-center text-white font-semibold leading-tight
                       sm:text-3xl sm:leading-[40px]
                       md:text-4xl md:leading-[50px]
                       lg:text-5xl lg:leading-[60px]

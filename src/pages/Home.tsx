@@ -1,5 +1,6 @@
 import { LampContainer } from "../components/ui/lamp";
 import { motion } from "framer-motion";
+import glowing_penguin from "../assets/images/glowing_penguin.svg";
 
 const Home = () => {
   return (
@@ -25,6 +26,11 @@ const Home = () => {
             something really cool is coming soon!
           </motion.h1>
         </LampContainer>
+        <img
+          src={glowing_penguin}
+          alt="Glowing Penguin"
+          className="absolute right-0 bottom-[-5vh] w-[50vw] max-w-[400px] md:bottom-[-3%] md:w-[30vw] lg:w-[25vw]"
+        />
       </div>
     </div>
   );

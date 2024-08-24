@@ -1,10 +1,9 @@
 import { LampContainer } from "../components/ui/lamp";
 import { motion } from "framer-motion";
-import glowing_penguin from "../assets/images/glowing_penguin.svg";
 
 const Home = () => {
   return (
-    <div className="relative min-h-screen overflow-x-hidden overflow-y-auto">
+    <div className="relative min-h-screen overflow-hidden font-outfit">
       <LampContainer>
         <motion.h1
           initial={{ opacity: 0.5, y: 100 }}
@@ -15,22 +14,16 @@ const Home = () => {
             ease: "easeInOut",
           }}
           className="text-center text-white font-semibold font-manrope leading-tight
-                    text-2xl sm:text-3xl sm:leading-[40px]
-                    md:text-4xl md:leading-[50px]
-                    lg:text-5xl lg:leading-[60px]
-                    xl:text-6xl xl:leading-[70px]"
+                      text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
           We appreciate your patience but
           <br />
           something really cool is coming soon!
         </motion.h1>
       </LampContainer>
-      <img
-        src={glowing_penguin}
-        alt="Glowing Penguin"
-        className="absolute right-0 bottom-[-3%]
-                     w-[50%] sm:w-[40%] md:w-[30%] lg:w-[25%] xl:w-[20%]"
-      />
+      <div className="absolute bottom-4 right-4 text-white text-xs opacity-70">
+        © ArkTech
+      </div>
     </div>
   );
 };

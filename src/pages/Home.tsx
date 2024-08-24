@@ -14,10 +14,7 @@ const Home = () => {
             ease: "easeInOut",
           }}
           className="text-center text-white font-semibold font-manrope leading-tight
-                      sm:text-3xl sm:leading-[40px]
-                      md:text-4xl md:leading-[50px]
-                      lg:text-5xl lg:leading-[60px]
-                      xl:text-6xl xl:leading-[70px]"
+                      text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl"
         >
           We appreciate your patience but
           <br />

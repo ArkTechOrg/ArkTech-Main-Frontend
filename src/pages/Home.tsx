@@ -13,7 +13,7 @@ const Home = () => {
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="text-center text-white font-semibold leading-tight
+          className="text-center text-white font-semibold font-manropeleading-tight
                       sm:text-3xl sm:leading-[40px]
                       md:text-4xl md:leading-[50px]
                       lg:text-5xl lg:leading-[60px]

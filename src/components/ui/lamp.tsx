@@ -51,7 +51,7 @@ export const LampContainer = ({
           <div className="absolute w-full right-0 bg-black h-16 bottom-0 z-20 [mask-image:linear-gradient(to_top,white,transparent)]" />
         </motion.div>
         <div className="absolute top-1/2 h-24 w-full translate-y-[6rem] scale-x-125 bg-black blur-2xl"></div>
-        <div className="absolute top-1/2 z-50 h-24 w-full bg-transparent opacity-10 backdrop-blur-md"></div>
+        <div className="absolute top-1/2 z-50 h-30 w-full bg-transparent opacity-30 backdrop-blur-md"></div>
         <div className="absolute inset-auto z-50 h-20 w-[50vw] max-w-[16rem] translate-y-1/2 rounded-full bg-[#987D39] opacity-50 blur-3xl"></div>
         <motion.div
           initial={{ width: "6rem" }}
@@ -61,7 +61,7 @@ export const LampContainer = ({
             duration: 0.8,
             ease: "easeInOut",
           }}
-          className="absolute inset-auto z-30 h-20 w-[30vw] max-w-48 -translate-y-[4rem] rounded-full bg-[#FFC020] blur-2xl"
+          className="absolute inset-auto z-30 h-20 w-[50vw] max-w-48 -translate-y-[3.8rem] rounded-full bg-[#FFC020] blur-2xl"
         ></motion.div>
         <motion.div
           initial={{ width: "10rem" }}
@@ -77,7 +77,7 @@ export const LampContainer = ({
 
       </div>
 
-      <div className="relative z-50 flex -translate-y-40 flex-col items-center px-5">
+      <div className="relative z-50 flex -translate-y-60 flex-col items-center px-5">
         {children}
       </div>
     </div>

@@ -6,7 +6,7 @@ const Home = () => {
     <div className="relative min-h-screen overflow-hidden font-outfit">
       <LampContainer>
         <motion.h1
-          initial={{ opacity: 0.5, y: 100 }}
+          initial={{ opacity: 0.1, y: 100 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{
             delay: 0.3,
